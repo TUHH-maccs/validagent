@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)",
+      "Bash(curl:*)",
+      "Bash(node scripts/migrate-run-data.js:*)",
+      "Bash(npx tsc:*)",
+      "Bash(node scripts/migrate-reasoning-data.js:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nValidAgent Repository: Add Honesty Pilot Set, TUHH styling, updated README\n\n- Rename repository to ValidAgent Repository\n- Add Honesty Pilot Set \\(PreStudy2\\) with 26 empirically validated agents\n- Add interactive visualizations: Fischbacher Plot, Validation Boxplot, Decision Scatter\n- Implement TUHH color scheme\n- Update README with new features and correct deployment URLs\n- Add lib/colors.ts for consistent color theming\n- Add migration scripts for data processing\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push:*)",
+      "Bash(gh run list:*)"
+    ]
+  }
+}

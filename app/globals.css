@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+/* ============================================
+   TUHH Corporate Design Color Palette
+   ============================================ */
+
+:root {
+  /* Primary Colors */
+  --tuhh-green: #00AD70;
+  --tuhh-red: #FF4F4F;
+  --tuhh-turquoise: #00C1D4;
+  --tuhh-turquoise-25: #00919F;
+  --tuhh-turquoise-50: #00606A;
+  --tuhh-greenblue: #265D71;
+  --tuhh-orange: #FF7E15;
+
+  /* Neutral Colors */
+  --tuhh-dark: #333333;
+  --tuhh-gray: #666666;
+  --tuhh-light: #E5E5E5;
+  --tuhh-offwhite: #F5F5F5;
+
+  /* Semantic Colors */
+  --color-honest: var(--tuhh-green);
+  --color-dishonest: var(--tuhh-red);
+  --color-neutral: var(--tuhh-gray);
+  --color-human: var(--tuhh-greenblue);
+  --color-agent: var(--tuhh-orange);
+  --color-accent: var(--tuhh-turquoise);
+
+  /* Layout */
+  --background: #ffffff;
+  --foreground: var(--tuhh-dark);
+  --background-secondary: var(--tuhh-offwhite);
+  --border-color: var(--tuhh-light);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* TUHH Colors for Tailwind */
+  --color-tuhh-green: var(--tuhh-green);
+  --color-tuhh-red: var(--tuhh-red);
+  --color-tuhh-turquoise: var(--tuhh-turquoise);
+  --color-tuhh-greenblue: var(--tuhh-greenblue);
+  --color-tuhh-orange: var(--tuhh-orange);
+  --color-tuhh-dark: var(--tuhh-dark);
+  --color-tuhh-gray: var(--tuhh-gray);
+  --color-tuhh-light: var(--tuhh-light);
+  --color-tuhh-offwhite: var(--tuhh-offwhite);
+
+  /* Aliases for backward compatibility */
+  --color-tuhh-petrol: var(--tuhh-greenblue);
+  --color-tuhh-cyan: var(--tuhh-turquoise);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Utility classes for TUHH colors */
+.text-tuhh-green { color: var(--tuhh-green); }
+.text-tuhh-red { color: var(--tuhh-red); }
+.text-tuhh-turquoise { color: var(--tuhh-turquoise); }
+.text-tuhh-greenblue { color: var(--tuhh-greenblue); }
+.text-tuhh-orange { color: var(--tuhh-orange); }
+.text-tuhh-dark { color: var(--tuhh-dark); }
+.text-tuhh-gray { color: var(--tuhh-gray); }
+
+/* Backward compatibility aliases */
+.text-tuhh-petrol { color: var(--tuhh-greenblue); }
+.text-tuhh-cyan { color: var(--tuhh-turquoise); }
+
+.bg-tuhh-green { background-color: var(--tuhh-green); }
+.bg-tuhh-red { background-color: var(--tuhh-red); }
+.bg-tuhh-turquoise { background-color: var(--tuhh-turquoise); }
+.bg-tuhh-greenblue { background-color: var(--tuhh-greenblue); }
+.bg-tuhh-orange { background-color: var(--tuhh-orange); }
+.bg-tuhh-offwhite { background-color: var(--tuhh-offwhite); }
+.bg-tuhh-light { background-color: var(--tuhh-light); }
+
+/* Backward compatibility aliases */
+.bg-tuhh-petrol { background-color: var(--tuhh-greenblue); }
+.bg-tuhh-cyan { background-color: var(--tuhh-turquoise); }
+
+.border-tuhh-greenblue { border-color: var(--tuhh-greenblue); }
+.border-tuhh-turquoise { border-color: var(--tuhh-turquoise); }
+.border-tuhh-light { border-color: var(--tuhh-light); }
+
+/* Backward compatibility aliases */
+.border-tuhh-petrol { border-color: var(--tuhh-greenblue); }
+.border-tuhh-cyan { border-color: var(--tuhh-turquoise); }
+
+/* Hover states */
+.hover\:text-tuhh-turquoise:hover { color: var(--tuhh-turquoise); }
+.hover\:text-tuhh-greenblue:hover { color: var(--tuhh-greenblue); }
+.hover\:bg-tuhh-greenblue:hover { background-color: var(--tuhh-greenblue); }
+.hover\:bg-tuhh-turquoise:hover { background-color: var(--tuhh-turquoise); }
+
+/* Backward compatibility aliases */
+.hover\:text-tuhh-cyan:hover { color: var(--tuhh-turquoise); }
+.hover\:bg-tuhh-petrol:hover { background-color: var(--tuhh-greenblue); }
+
+/* Chart color classes */
+.fill-honest { fill: var(--tuhh-green); }
+.fill-dishonest { fill: var(--tuhh-red); }
+.fill-neutral { fill: var(--tuhh-gray); }
+.fill-human { fill: var(--tuhh-greenblue); }
+.fill-agent { fill: var(--tuhh-orange); }
+
+.stroke-honest { stroke: var(--tuhh-green); }
+.stroke-dishonest { stroke: var(--tuhh-red); }
+.stroke-neutral { stroke: var(--tuhh-gray); }
+.stroke-human { stroke: var(--tuhh-greenblue); }
+.stroke-agent { stroke: var(--tuhh-orange); }
