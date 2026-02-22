@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
 
   // Base path for GitHub Pages deployment
   // Replace 'tuhh-agent-repov_v2' with your actual repository name
-  basePath: process.env.NODE_ENV === "production" ? "/agent-repository-v2" : "",
+  basePath: process.env.NODE_ENV === "production" ? "/validagent" : "",
 
   // Disable image optimization for static export
   images: {
