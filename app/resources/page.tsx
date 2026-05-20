@@ -10,9 +10,26 @@ const COLORS = {
 
 const resources = [
   {
+    title: "EMAS 2026",
+    description:
+      "Presentation slides and supporting material for introducing the repository and simulation demo at EMAS 2026.",
+    href: "/resources/emas-2026-presentation",
+    available: true,
+    icon: (
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.5}
+        d="M3 5h18M4 5h16v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm5 16h6"
+      />
+    ),
+  },
+  {
     title: "Getting Started Guide",
     description:
       "Learn how to browse, filter, and export agents from the repository. Includes setup instructions for integrating agents into your research workflow.",
+    href: null,
+    available: false,
     icon: (
       <path
         strokeLinecap="round"
@@ -23,22 +40,11 @@ const resources = [
     ),
   },
   {
-    title: "API Documentation",
-    description:
-      "Technical reference for programmatic access to the agent repository. Covers data formats, query parameters, and integration examples.",
-    icon: (
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={1.5}
-        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-      />
-    ),
-  },
-  {
     title: "Contribution Guidelines",
     description:
       "How to submit new agents, propose improvements, or contribute to the codebase. Includes quality standards and review process.",
+    href: null,
+    available: false,
     icon: (
       <path
         strokeLinecap="round"
@@ -52,6 +58,8 @@ const resources = [
     title: "Research Papers",
     description:
       "Academic publications and working papers that utilize or reference the agent repository. Includes citation guidelines.",
+    href: null,
+    available: false,
     icon: (
       <path
         strokeLinecap="round"
@@ -110,8 +118,7 @@ export default function ResourcesPage() {
               Resources
             </h1>
             <p className="mt-2 text-gray-600 max-w-2xl">
-              Guides and documentation —{" "}
-              <span className="font-medium" style={{ color: COLORS.turquoise }}>Coming Soon</span>
+              Guides and documentation
             </p>
           </div>
         </div>
@@ -143,30 +150,50 @@ export default function ResourcesPage() {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-3">
                     <h3 className="text-lg font-semibold text-gray-900">{resource.title}</h3>
-                    <span
-                      className="px-2 py-0.5 text-xs font-medium rounded-full"
-                      style={{ backgroundColor: `${COLORS.orange}20`, color: COLORS.orange }}
-                    >
-                      Coming Soon
-                    </span>
+                    {!resource.available && (
+                      <span
+                        className="px-2 py-0.5 text-xs font-medium rounded-full"
+                        style={{ backgroundColor: `${COLORS.orange}20`, color: COLORS.orange }}
+                      >
+                        Coming Soon
+                      </span>
+                    )}
                   </div>
                   <p className="mt-2 text-sm text-gray-600 leading-relaxed">
                     {resource.description}
                   </p>
-                  <button
-                    disabled
-                    className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-gray-400 cursor-not-allowed"
-                  >
-                    Read more
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </button>
+                  {resource.available && resource.href ? (
+                    <Link
+                      href={resource.href}
+                      className="mt-4 inline-flex items-center gap-2 text-sm font-medium"
+                      style={{ color: COLORS.greenblue }}
+                    >
+                      Open page
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </Link>
+                  ) : (
+                    <button
+                      disabled
+                      className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-gray-400 cursor-not-allowed"
+                    >
+                      Read more
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
@@ -223,7 +250,7 @@ export default function ResourcesPage() {
       <footer className="border-t border-gray-200 bg-white mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <p className="text-sm text-gray-500 text-center">
-            ValidAgent Repository · Resources section coming soon
+            ValidAgent Repository
           </p>
         </div>
       </footer>

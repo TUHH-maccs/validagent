@@ -10,22 +10,12 @@ const COLORS = {
 
 const projects = [
   {
-    title: "Green Dice Game Study",
+    title: "Agent Simulation Demo",
     description:
-      "Investigating cooperative behavior and environmental decision-making through gamified agent interactions. Explores how different behavioral traits influence sustainable choices.",
-    tags: ["Climate", "Social Norms", "Honesty"],
-  },
-  {
-    title: "Climate Policy Simulation",
-    description:
-      "Multi-agent simulation of climate policy negotiations using agents with varying degrees of honesty, cooperation, and environmental awareness.",
-    tags: ["Climate", "Decision Making", "Ethics"],
-  },
-  {
-    title: "ABM Teaching Module",
-    description:
-      "Educational framework for teaching agent-based modeling concepts using the repository's curated agents. Includes interactive exercises and reproducible experiments.",
-    tags: ["Teaching", "Social Norms"],
+      "A minimal example showing how exported agent profiles from the repository can be loaded and run in a simulation environment.",
+    tags: ["Simulation", "Die-Roll", "Research Demo"],
+    href: "/projects/simulation",
+    available: true,
   },
 ];
 
@@ -76,8 +66,7 @@ export default function ProjectsPage() {
               Projects
             </h1>
             <p className="mt-2 text-gray-600 max-w-2xl">
-              Example studies and applications using these agents —{" "}
-              <span className="font-medium" style={{ color: COLORS.turquoise }}>Coming Soon</span>
+              Example studies and applications using these agents.
             </p>
           </div>
         </div>
@@ -115,12 +104,14 @@ export default function ProjectsPage() {
               <div className="p-5">
                 <div className="flex items-start justify-between gap-3">
                   <h3 className="text-lg font-semibold text-gray-900">{project.title}</h3>
-                  <span
-                    className="px-2 py-1 text-xs font-medium rounded-full whitespace-nowrap"
-                    style={{ backgroundColor: `${COLORS.orange}20`, color: COLORS.orange }}
-                  >
-                    Coming Soon
-                  </span>
+                  {!project.available && (
+                    <span
+                      className="px-2 py-1 text-xs font-medium rounded-full whitespace-nowrap"
+                      style={{ backgroundColor: `${COLORS.orange}20`, color: COLORS.orange }}
+                    >
+                      Coming Soon
+                    </span>
+                  )}
                 </div>
 
                 <p className="mt-3 text-sm text-gray-600 leading-relaxed">
@@ -140,13 +131,22 @@ export default function ProjectsPage() {
                   ))}
                 </div>
 
-                {/* Disabled Button */}
-                <button
-                  disabled
-                  className="mt-5 w-full py-2.5 text-sm font-medium text-gray-400 bg-gray-100 rounded-lg cursor-not-allowed"
-                >
-                  View Project
-                </button>
+                {project.available && project.href ? (
+                  <Link
+                    href={project.href}
+                    className="mt-5 w-full inline-flex items-center justify-center py-2.5 text-sm font-medium text-white rounded-lg"
+                    style={{ backgroundColor: COLORS.greenblue }}
+                  >
+                    View Demo →
+                  </Link>
+                ) : (
+                  <button
+                    disabled
+                    className="mt-5 w-full py-2.5 text-sm font-medium text-gray-400 bg-gray-100 rounded-lg cursor-not-allowed"
+                  >
+                    View Project
+                  </button>
+                )}
               </div>
             </div>
           ))}
@@ -166,7 +166,11 @@ export default function ProjectsPage() {
                 d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            Have a project idea? Contact us to collaborate!
+            Have a project idea?{" "}
+            <a href="mailto:MACCS@tuhh.de" className="underline font-medium">
+              Contact us
+            </a>{" "}
+            to collaborate!
           </div>
         </div>
       </main>
@@ -175,7 +179,7 @@ export default function ProjectsPage() {
       <footer className="border-t border-gray-200 bg-white mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <p className="text-sm text-gray-500 text-center">
-            ValidAgent Repository · Projects section coming soon
+            ValidAgent Repository
           </p>
         </div>
       </footer>
