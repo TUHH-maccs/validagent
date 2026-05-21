@@ -8,7 +8,7 @@ const COLORS = {
 
 export default function Emas2026PresentationPage() {
   const basePath = process.env.NODE_ENV === "production" ? "/validagent" : "";
-  const pdfPath = `${basePath}/EMAS2026_ValidAgent.pdf`;
+  const pdfPath = `${basePath}/EMAS2026_ValidAgent_v1.pdf`;
 
   return (
     <div className="min-h-screen bg-slate-50">
