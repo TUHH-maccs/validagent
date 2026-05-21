@@ -12,7 +12,7 @@ const resources = [
   {
     title: "EMAS 2026",
     description:
-      "Presentation slides and supporting material for introducing the repository and simulation demo at EMAS 2026.",
+      "Lightning talk slide for introducing the repository and simulation demo at EMAS 2026.",
     href: "/resources/emas-2026-presentation",
     available: true,
     icon: (
