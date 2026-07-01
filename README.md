@@ -1,5 +1,7 @@
 # ValidAgent Repository
 
+> **⚠️ Legacy notice:** everything below this line documents the **pre-rebuild (v1)** state of the project. It is being replaced as part of a full rebuild (clean data pipeline with real study data, redesigned frontend). See the [Rebuild Log](#rebuild-log) at the bottom of this file for the current status. The pre-rebuild state remains permanently available via the `v1-legacy` git tag.
+
 A curated collection of AI agents with diverse behavioral traits for research, development, and reproducible experimentation.
 
 **Live Demo:** [https://deqz1080.github.io/agent-repository-v2/](https://deqz1080.github.io/agent-repository-v2/)
@@ -267,3 +269,13 @@ MIT License - see [LICENSE](LICENSE) for details.
 - Built with [Next.js](https://nextjs.org/)
 - Styled with [Tailwind CSS](https://tailwindcss.com/)
 - Visualizations with [Recharts](https://recharts.org/)
+
+## Rebuild Log
+
+Everything above this section describes the legacy (pre-rebuild) project. The permanent snapshot of that state is tagged [`v1-legacy`](../../tree/v1-legacy). New entries here document the rebuild as it happens; this section (and the rest of the README) will be rewritten once the rebuild lands on `main`.
+
+### 2026-07-01 — Rebuild started
+
+- Tagged the pre-rebuild state as `v1-legacy` (permanent reference, checkoutable, no longer live once the rebuild ships).
+- Started work on the `rebuild` branch; `main` and the live site stay untouched until the rebuild is merged.
+- Goals: rebuild the data pipeline from real study data (raw data kept locally, not committed) into a clean `agents.csv` + derived stats, and redesign the frontend.
