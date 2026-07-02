@@ -54,3 +54,7 @@ next-env.d.ts
 # OS
 .DS_Store
 Thumbs.db
+
+# local raw/intermediate data staging for the data pipeline rebuild
+# (not for publication — only the derived output in data/ is committed)
+/prepare/
