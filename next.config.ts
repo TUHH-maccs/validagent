@@ -4,9 +4,9 @@ const nextConfig: NextConfig = {
   // Static export for GitHub Pages
   output: "export",
 
-  // Base path for GitHub Pages deployment
-  // Replace 'tuhh-agent-repov_v2' with your actual repository name
-  basePath: process.env.NODE_ENV === "production" ? "/validagent" : "",
+  // No basePath: the site is served at the root of the custom domain
+  // (www.validagent.org), not under /validagent/ anymore.
+  basePath: "",
 
   // Disable image optimization for static export
   images: {

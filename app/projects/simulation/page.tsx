@@ -102,8 +102,7 @@ export default function SimulationPage() {
       try {
         setLoading(true);
         setError(null);
-        const basePath = process.env.NODE_ENV === "production" ? "/validagent" : "";
-        const response = await fetch(`${basePath}/validagent_demo_simulation.json`);
+        const response = await fetch("/validagent_demo_simulation.json");
 
         if (!response.ok) {
           throw new Error(`Failed to load simulation data (${response.status})`);

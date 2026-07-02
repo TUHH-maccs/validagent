@@ -37,8 +37,7 @@ export function StructuredAgentCard({
   };
 
   const [avatarError, setAvatarError] = useState(false);
-  const basePath = process.env.NODE_ENV === "production" ? "/validagent" : "";
-  const avatarPath = `${basePath}/avatars/${agent.id}.png`;
+  const avatarPath = `/avatars/${agent.id}.png`;
 
   // Generate persona based on active traits and prompt wrapper
   const generatePersona = (): string => {
