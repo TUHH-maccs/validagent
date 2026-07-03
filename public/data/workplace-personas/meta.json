@@ -1,0 +1,45 @@
+{
+  "setId": "workplace-personas",
+  "name": "Workplace",
+  "description": "20 generic workplace archetypes demonstrating personality modeling and character simulation",
+  "domain": "workplace behavior",
+  "experimentalParadigm": "demonstration",
+  "validationStrength": "placeholder",
+  "promptWrapper": {
+    "demographics": "You are {{name}}, a {{age}}-year-old {{gender}} working as {{occupation}} at a mid-sized regional office.",
+    "characterTraits": "Your personality is characterized by being: {{traits}}.",
+    "narrativeIdentity": "{{narrative}}"
+  },
+  "tags": [
+    {
+      "id": "workplace",
+      "name": "Workplace",
+      "color": "#FF7E15"
+    },
+    {
+      "id": "comedy",
+      "name": "Comedy",
+      "color": "#00C1D4"
+    },
+    {
+      "id": "sales",
+      "name": "Sales",
+      "color": "#00AD70"
+    },
+    {
+      "id": "management",
+      "name": "Management",
+      "color": "#265D71"
+    },
+    {
+      "id": "communication",
+      "name": "Communication",
+      "color": "#00919F"
+    },
+    {
+      "id": "ethics",
+      "name": "Ethics",
+      "color": "#FF4F4F"
+    }
+  ]
+}

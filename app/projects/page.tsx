@@ -13,7 +13,7 @@ const projects = [
     title: "Agent Simulation Demo",
     description:
       "A minimal example showing how exported agent profiles from the repository can be loaded and run in a simulation environment.",
-    tags: ["Simulation", "Die-Roll", "Research Demo"],
+    tags: ["Simulation", "Die Roll", "Research Demo"],
     href: "/projects/simulation",
     available: true,
   },

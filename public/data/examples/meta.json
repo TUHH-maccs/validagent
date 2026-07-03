@@ -1,0 +1,50 @@
+{
+  "setId": "examples",
+  "name": "Examples",
+  "description": "Demo agents for research concepts",
+  "domain": "various",
+  "experimentalParadigm": "demonstration",
+  "validationStrength": "placeholder",
+  "tags": [
+    {
+      "id": "honesty",
+      "name": "Honesty",
+      "color": "#00AD70"
+    },
+    {
+      "id": "climate",
+      "name": "Climate",
+      "color": "#00C1D4"
+    },
+    {
+      "id": "social-norms",
+      "name": "Social Norms",
+      "color": "#265D71"
+    },
+    {
+      "id": "teaching",
+      "name": "Teaching",
+      "color": "#FF7E15"
+    },
+    {
+      "id": "ethics",
+      "name": "Ethics",
+      "color": "#FF4F4F"
+    },
+    {
+      "id": "communication",
+      "name": "Communication",
+      "color": "#00919F"
+    },
+    {
+      "id": "decision-making",
+      "name": "Decision Making",
+      "color": "#00606A"
+    },
+    {
+      "id": "sustainability",
+      "name": "Sustainability",
+      "color": "#265D71"
+    }
+  ]
+}

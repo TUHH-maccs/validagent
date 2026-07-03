@@ -24,7 +24,7 @@
   "scenarios": [
     {
       "id": "die-roll",
-      "title": "Validation: Die-Roll Task",
+      "title": "Validation: Die Roll Task",
       "description": "Each agent  observes a die roll and reports the outcome. Higher reports lead to higher payouts.",
       "steps": [
         {

@@ -56,5 +56,5 @@ next-env.d.ts
 Thumbs.db
 
 # local raw/intermediate data staging for the data pipeline rebuild
-# (not for publication — only the derived output in data/ is committed)
+# (not for publication — only the derived output in public/data/ is committed)
 /prepare/
