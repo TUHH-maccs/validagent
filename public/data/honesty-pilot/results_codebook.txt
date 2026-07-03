@@ -1,0 +1,7 @@
+results/{experiment_id}.csv — column codebook (one file per experiment_id, same columns in each)
+
+experiment_id: Numeric experiment identifier — see stats_meta.json for the module/style recipe per ID
+agent_id: Matches agents.csv agent_id
+run_id: Repetition number within the experiment (1-based)
+agent_report: Agent's reported die value (1-6)
+agent_reason: Agent's free-text reasoning for its report

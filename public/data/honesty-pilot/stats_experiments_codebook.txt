@@ -1,0 +1,11 @@
+stats_experiments.csv — column codebook
+
+experiment_id: Matches results.csv / stats_results.csv experiment_id
+report_pct_1..6: Percentage of all agent_report values in this experiment equal to 1..6 (Fischbacher-plot distribution)
+honesty_dist_honest_humans_0/20/40/60/80/100: Among agents whose linked human was honest (human_honest=True), percentage of agents whose own honesty_rate (from stats_results.csv) rounds to that bucket
+honesty_dist_dishonest_humans_0/20/40/60/80/100: Same, for agents whose linked human was NOT honest
+kappa: Weighted Cohen's kappa (human honesty vs. agent honesty rate) for this condition, ported from prepare/analysis.md's compute_kappa_weighted
+kappa_n: Number of agents included in the kappa computation
+kappa_se: Large-sample standard error of kappa
+kappa_significant: True if |kappa/kappa_se| > 1.96 (~p<0.05, two-tailed)
+agent_lie_rate: Fraction of ALL runs in this condition where agent_report != human_roll (compare to stats_meta.json's constant human_lie_rate)

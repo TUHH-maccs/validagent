@@ -1,0 +1,7 @@
+stats_results/{experiment_id}.csv — column codebook (one file per experiment_id, same columns in each)
+
+agent_id: Matches agents.csv agent_id
+experiment_id: Matches results.csv experiment_id — see stats_meta.json for the module/style recipe
+n_runs: Number of non-null runs for this agent x experiment (usually 5; occasionally 4 due to a missing run)
+n_honest: Number of runs where agent_report == agents.csv human_roll for this agent
+honesty_rate: n_honest / n_runs (0-1)

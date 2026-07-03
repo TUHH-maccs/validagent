@@ -1,0 +1,149 @@
+{
+  "psm_risk": {
+    "adj": {
+      "0-1.99": "very risk-averse",
+      "1.99-3.99": "somewhat risk-averse",
+      "4-6": "neither particularly risk-seeking nor risk-averse",
+      "6.01-8.01": "somewhat risk-seeking",
+      "8.01-10": "very risk-seeking"
+    },
+    "dsc": {
+      "0-1.99": "strongly prefer safe options",
+      "1.99-3.99": "tend to prefer safe options",
+      "4-6": "are indifferent between safe and risky options",
+      "6.01-8.01": "tend to prefer risky options over safe ones",
+      "8.01-10": "strongly prefer risky options over safe ones"
+    },
+    "pct": {
+      "0-2.5": "10",
+      "2.5-3.5": "20",
+      "3.5-4.5": "30",
+      "4.5-5.5": "40",
+      "5.5-6.5": "50",
+      "6.5-7.5": "70",
+      "7.5-10": "90"
+    }
+  },
+  "psm_patience": {
+    "adj": {
+      "0-1.99": "very impatient",
+      "1.99-3.99": "somewhat impatient",
+      "4-6": "neither particularly patient nor impatient",
+      "6.01-8.01": "somewhat patient",
+      "8.01-10": "very patient"
+    },
+    "dsc": {
+      "0-1.99": "strongly prefer immediate rewards",
+      "1.99-3.99": "tend to prefer immediate rewards",
+      "4-6": "are indifferent between immediate and delayed rewards",
+      "6.01-8.01": "tend to prefer larger delayed rewards over smaller immediate ones",
+      "8.01-10": "strongly prefer larger delayed rewards over smaller immediate ones"
+    },
+    "pct": {
+      "0-5.5": "10",
+      "5.5-6.5": "20",
+      "6.5-7.5": "40",
+      "7.5-8.5": "60",
+      "8.5-9.5": "80",
+      "9.5-10": "90"
+    }
+  },
+  "psm_altruism": {
+    "adj": {
+      "0-1.99": "very self-interested",
+      "1.99-3.99": "somewhat self-interested",
+      "4-6": "neither particularly altruistic nor self-interested",
+      "6.01-8.01": "somewhat altruistic",
+      "8.01-10": "very altruistic"
+    },
+    "dsc": {
+      "0-1.99": "strongly prioritize your own interests over others'",
+      "1.99-3.99": "tend to prioritize your own interests over others'",
+      "4-6": "are indifferent between your own and others' interests",
+      "6.01-8.01": "tend to prioritize others' interests over your own",
+      "8.01-10": "strongly prioritize others' interests over your own"
+    },
+    "pct": {
+      "0-5.5": "10",
+      "5.5-6.5": "20",
+      "6.5-7.5": "30",
+      "7.5-8.5": "50",
+      "8.5-9.5": "60",
+      "9.5-10": "90"
+    }
+  },
+  "psm_pos_rec": {
+    "adj": {
+      "0-1.99": "very ungrateful",
+      "1.99-3.99": "somewhat ungrateful",
+      "4-6": "neither particularly grateful nor ungrateful",
+      "6.01-8.01": "somewhat grateful",
+      "8.01-10": "very grateful"
+    },
+    "dsc": {
+      "0-1.99": "strongly tend not to return good deeds",
+      "1.99-3.99": "tend not to return good deeds",
+      "4-6": "are indifferent between returning and ignoring good deeds",
+      "6.01-8.01": "tend to return good deeds",
+      "8.01-10": "strongly tend to return good deeds"
+    },
+    "pct": {
+      "0-7.5": "10",
+      "7.5-8.5": "20",
+      "8.5-9.5": "40",
+      "9.5-10": "80"
+    }
+  },
+  "psm_neg_rec": {
+    "adj": {
+      "0-1.99": "very forgiving",
+      "1.99-3.99": "somewhat forgiving",
+      "4-6": "neither particularly forgiving nor retaliatory",
+      "6.01-8.01": "somewhat retaliatory",
+      "8.01-10": "very retaliatory"
+    },
+    "dsc": {
+      "0-1.99": "strongly tend to forgive wrongdoings",
+      "1.99-3.99": "tend to forgive wrongdoings",
+      "4-6": "are indifferent between letting wrongdoings go and acting against them",
+      "6.01-8.01": "tend to retaliate against wrongdoings",
+      "8.01-10": "strongly tend to retaliate against wrongdoings"
+    },
+    "pct": {
+      "0-0.5": "10",
+      "0.5-1.5": "20",
+      "1.5-2.167": "30",
+      "2.167-2.833": "40",
+      "2.833-3.5": "50",
+      "3.5-4.167": "60",
+      "4.167-4.833": "70",
+      "4.833-5.833": "80",
+      "5.833-10": "90"
+    }
+  },
+  "psm_trust": {
+    "adj": {
+      "0-1.99": "very distrusting",
+      "1.99-3.99": "somewhat distrusting",
+      "4-6": "neither particularly trusting nor distrusting",
+      "6.01-8.01": "somewhat trusting",
+      "8.01-10": "very trusting"
+    },
+    "dsc": {
+      "0-1.99": "strongly assume others cannot be trusted",
+      "1.99-3.99": "tend to assume others cannot be trusted",
+      "4-6": "neither trust nor distrust others in general",
+      "6.01-8.01": "tend to assume others can be trusted",
+      "8.01-10": "strongly assume others can be trusted"
+    },
+    "pct": {
+      "0-2.5": "10",
+      "2.5-4.5": "20",
+      "4.5-5.5": "40",
+      "5.5-6.5": "50",
+      "6.5-7.5": "70",
+      "7.5-8.5": "80",
+      "8.5-10": "90"
+    }
+  }
+}

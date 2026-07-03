@@ -1,0 +1,31 @@
+agents.csv — column codebook
+
+agent_id: Synthetic participant identifier (matches results.csv / reasoning_codes.csv)
+dem_age: Age in years (integer, 18-99)
+dem_gender: man / woman / person (Other) / blank (Prefer not to disclose)
+dem_ethnicity: White / Black / Hispanic / Asian / other / blank (Prefer not to disclose)
+dem_education: less than a high school diploma / a high school diploma / some college education / an undergraduate degree / a graduate degree / a doctoral degree
+dem_income: less than $25,000 per year ... more than $200,000 per year (7 bands) / blank (Prefer not to disclose)
+dem_occupation: full-time / part-time / self-employed / unemployed / retired / student / homemaker or caregiver / free-text when the participant selected "other"
+dem_industry: technology / healthcare / retail / finance / education / manufacturing / arts and entertainment / hospitality / government / free-text when the participant selected "other"
+dem_politics: Democrat / Republican / Independent / other / blank (Prefer not to disclose)
+dem_religion: Catholic / Protestant / Jewish / Muslim / Buddhist / Hindu / not religious / other / blank (Prefer not to disclose)
+dem_text: Full demographics paragraph assembled from the fields above, ready to drop into the demographics__text prompt module (see prepare/prompt_templates.py, not published)
+hx_hh: HEXACO Honesty-Humility, facet mean (1-5), reverse-keyed items already corrected
+hx_em: HEXACO Emotionality, facet mean (1-5), reverse-keyed items already corrected
+hx_ex: HEXACO Extraversion, facet mean (1-5), reverse-keyed items already corrected
+hx_ag: HEXACO Agreeableness, facet mean (1-5), reverse-keyed items already corrected
+hx_co: HEXACO Conscientiousness, facet mean (1-5), reverse-keyed items already corrected
+hx_op: HEXACO Openness to Experience, facet mean (1-5), reverse-keyed items already corrected
+psm_risk: Preference Survey Module: risk tolerance (0-10)
+psm_patience: Preference Survey Module: patience (0-10)
+psm_altruism: Preference Survey Module: altruism (0-10)
+psm_pos_rec: Preference Survey Module: positive reciprocity (0-10)
+psm_neg_rec: Preference Survey Module: negative reciprocity, mean of 3 items (0-10)
+psm_trust: Preference Survey Module: trust (0-10)
+cs_deontology: Consequentialist Scale: deontology, mean of 5 items (1-5)
+cs_utilitarianism: Consequentialist Scale: utilitarianism, mean of 5 items (1-5)
+human_roll: True die roll shown to this participant (1-6)
+human_report: Participant's self-reported die value (1-6)
+human_reason: Participant's open-ended stated reason for their report
+human_honest: True if human_report == human_roll. Fixed per agent, independent of experiment_id.

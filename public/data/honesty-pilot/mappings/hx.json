@@ -1,0 +1,154 @@
+{
+  "hx_hh": {
+    "adj": {
+      "1.0-1.8": "very dishonest and arrogant",
+      "1.8-2.6": "somewhat dishonest and arrogant",
+      "2.6-3.4": "neither particularly honest nor dishonest",
+      "3.4-4.2": "somewhat honest and humble",
+      "4.2-5.0": "very honest and humble"
+    },
+    "dsc": {
+      "1.0-1.8": "strongly tend to bend rules and act in self-serving ways",
+      "1.8-2.6": "tend to bend rules and act in self-serving ways",
+      "2.6-3.4": "are neither particularly inclined to bend rules nor to act with exceptional integrity",
+      "3.4-4.2": "tend to follow rules, be fully honest, and treat others fairly",
+      "4.2-5.0": "strongly tend to follow rules, be fully honest, and treat others fairly"
+    },
+    "pct": {
+      "1.0-3.375": "10",
+      "3.375-3.625": "20",
+      "3.625-3.875": "30",
+      "3.875-4.125": "40",
+      "4.125-4.375": "60",
+      "4.375-4.625": "70",
+      "4.625-4.875": "80",
+      "4.875-5.0": "90"
+    }
+  },
+  "hx_em": {
+    "adj": {
+      "1.0-1.8": "very emotionally detached",
+      "1.8-2.6": "somewhat emotionally detached",
+      "2.6-3.4": "neither particularly emotionally dependent nor emotionally detached",
+      "3.4-4.2": "somewhat emotionally dependent",
+      "4.2-5.0": "very emotionally dependent"
+    },
+    "dsc": {
+      "1.0-1.8": "strongly tend to stay calm under pressure and rarely feel emotionally dependent on others",
+      "1.8-2.6": "tend to stay calm under pressure and rarely feel emotionally dependent on others",
+      "2.6-3.4": "are neither particularly anxious nor emotionally detached from others",
+      "3.4-4.2": "tend to feel anxious under pressure and frequently seek emotional support from others",
+      "4.2-5.0": "strongly tend to feel anxious under pressure and frequently seek emotional support from others"
+    },
+    "pct": {
+      "1.0-2.375": "10",
+      "2.375-2.625": "30",
+      "2.625-2.875": "40",
+      "2.875-3.125": "50",
+      "3.125-3.375": "70",
+      "3.375-3.625": "80",
+      "3.625-5.0": "90"
+    }
+  },
+  "hx_ex": {
+    "adj": {
+      "1.0-1.8": "very introverted",
+      "1.8-2.6": "somewhat introverted",
+      "2.6-3.4": "neither particularly extraverted nor introverted",
+      "3.4-4.2": "somewhat extraverted",
+      "4.2-5.0": "very extraverted"
+    },
+    "dsc": {
+      "1.0-1.8": "strongly tend to prefer solitary activities and feel little need for social interaction",
+      "1.8-2.6": "tend to prefer solitary activities and feel little need for social interaction",
+      "2.6-3.4": "are neither particularly drawn to social situations nor inclined to avoid them",
+      "3.4-4.2": "tend to enjoy socializing and actively seek out social interaction",
+      "4.2-5.0": "strongly tend to enjoy socializing and actively seek out social interaction"
+    },
+    "pct": {
+      "1.0-2.875": "10",
+      "2.875-3.125": "20",
+      "3.125-3.375": "30",
+      "3.375-3.625": "40",
+      "3.625-3.875": "50",
+      "3.875-4.125": "60",
+      "4.125-4.375": "80",
+      "4.375-5.0": "90"
+    }
+  },
+  "hx_ag": {
+    "adj": {
+      "1.0-1.8": "very disagreeable",
+      "1.8-2.6": "somewhat disagreeable",
+      "2.6-3.4": "neither particularly agreeable nor disagreeable",
+      "3.4-4.2": "somewhat agreeable",
+      "4.2-5.0": "very agreeable"
+    },
+    "dsc": {
+      "1.0-1.8": "strongly tend to hold grudges and express anger when treated badly",
+      "1.8-2.6": "tend to hold grudges and express anger when treated badly",
+      "2.6-3.4": "are neither particularly quick to forgive nor inclined to hold grudges when treated badly",
+      "3.4-4.2": "tend to forgive others easily and rarely feel or express anger",
+      "4.2-5.0": "strongly tend to forgive others easily and rarely feel or express anger"
+    },
+    "pct": {
+      "1.0-2.375": "10",
+      "2.375-2.625": "20",
+      "2.625-2.875": "30",
+      "2.875-3.125": "50",
+      "3.125-3.375": "60",
+      "3.375-3.625": "80",
+      "3.625-5.0": "90"
+    }
+  },
+  "hx_co": {
+    "adj": {
+      "1.0-1.8": "very undisciplined",
+      "1.8-2.6": "somewhat undisciplined",
+      "2.6-3.4": "neither particularly conscientious nor undisciplined",
+      "3.4-4.2": "somewhat conscientious",
+      "4.2-5.0": "very conscientious"
+    },
+    "dsc": {
+      "1.0-1.8": "strongly tend to procrastinate and struggle to follow through on plans and commitments",
+      "1.8-2.6": "tend to procrastinate and struggle to follow through on plans and commitments",
+      "2.6-3.4": "are neither particularly organized nor disorganized in how you approach tasks",
+      "3.4-4.2": "tend to plan carefully, stay organized, and follow through on your commitments",
+      "4.2-5.0": "strongly tend to plan carefully, stay organized, and follow through on your commitments"
+    },
+    "pct": {
+      "1.0-3.125": "10",
+      "3.125-3.375": "20",
+      "3.375-3.625": "30",
+      "3.625-3.875": "50",
+      "3.875-4.125": "60",
+      "4.125-4.375": "80",
+      "4.375-5.0": "90"
+    }
+  },
+  "hx_op": {
+    "adj": {
+      "1.0-1.8": "very conventional",
+      "1.8-2.6": "somewhat conventional",
+      "2.6-3.4": "neither particularly curious nor conventional",
+      "3.4-4.2": "somewhat curious",
+      "4.2-5.0": "very curious"
+    },
+    "dsc": {
+      "1.0-1.8": "strongly tend to prefer routine and familiar ways of thinking over novelty",
+      "1.8-2.6": "tend to prefer routine and familiar ways of thinking over novelty",
+      "2.6-3.4": "are neither particularly open nor closed to new experiences and ideas",
+      "3.4-4.2": "tend to enjoy exploring new ideas, thinking creatively, and seeking out unconventional experiences",
+      "4.2-5.0": "strongly tend to enjoy exploring new ideas, thinking creatively, and seeking out unconventional experiences"
+    },
+    "pct": {
+      "1.0-3.125": "10",
+      "3.125-3.375": "20",
+      "3.375-3.625": "30",
+      "3.625-3.875": "40",
+      "3.875-4.125": "60",
+      "4.125-4.375": "80",
+      "4.375-5.0": "90"
+    }
+  }
+}

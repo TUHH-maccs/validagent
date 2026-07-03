@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { CHART_COLORS, TUHH_COLORS } from "@/lib/colors";
 
 export interface AgentValidationPoint {
@@ -62,6 +62,7 @@ export function ValidationBoxplot({ agents, experimentId, title }: ValidationBox
     agents.filter((a) => !a.humanHonest), [agents]);
   const honestHumans = useMemo(() =>
     agents.filter((a) => a.humanHonest), [agents]);
+  const totalCount = agents.length;
 
   // Calculate stats
   const dishonestStats = useMemo(() =>
@@ -69,21 +70,45 @@ export function ValidationBoxplot({ agents, experimentId, title }: ValidationBox
   const honestStats = useMemo(() =>
     calcBoxplotStats(honestHumans.map(a => a.agentHonestRate)), [honestHumans]);
 
-  // Chart dimensions
-  const width = 400;
+  // Chart dimensions. Width tracks the actual container so the two boxplot
+  // columns center over the "Human Dishonest"/"Human Honest" summary boxes
+  // below, which stretch to the card's full width.
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState(400);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new ResizeObserver((entries) => {
+      const w = entries[0]?.contentRect.width;
+      if (w) setWidth(w);
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   const height = 280;
   const marginTop = 20;
-  const marginBottom = 50;
-  const marginLeft = 50;
-  const marginRight = 20;
+  const marginBottom = 40;
+  // Symmetric margins so the plot area itself is centered in the card,
+  // matching the boxplot columns which are centered on chartCenter below.
+  // marginLeft matches FischbacherPlot's AXIS_RESERVED_WIDTH so both charts
+  // read the same way; tick text ends at marginLeft-8=50, title sits at x=14 below.
+  const marginLeft = 64;
+  const marginRight = 64;
   const plotWidth = width - marginLeft - marginRight;
   const plotHeight = height - marginTop - marginBottom;
 
   // Scales
   const yScale = (val: number) => marginTop + plotHeight * (1 - val);
   const boxWidth = 60;
-  const dishonestX = marginLeft + plotWidth * 0.25;
-  const honestX = marginLeft + plotWidth * 0.75;
+  // Center the pair of columns on the actual card center (not just 25%/75%
+  // of the plot area), so they line up with the two summary boxes below
+  // even though marginLeft != marginRight.
+  const chartCenter = width / 2;
+  const columnSpread = plotWidth * 0.25;
+  const dishonestX = chartCenter - columnSpread;
+  const honestX = chartCenter + columnSpread;
 
   // Tooltip state
   const [hoveredAgent, setHoveredAgent] = useState<AgentValidationPoint | null>(null);
@@ -189,10 +214,10 @@ export function ValidationBoxplot({ agents, experimentId, title }: ValidationBox
       </div>
 
       {/* SVG Chart */}
-      <div className="relative">
+      <div ref={containerRef} className="relative">
         <svg width={width} height={height} className="overflow-visible">
           {/* Y-axis grid lines */}
-          {[0, 0.25, 0.5, 0.75, 1].map((val) => (
+          {[0, 0.2, 0.4, 0.6, 0.8, 1].map((val) => (
             <g key={val}>
               <line
                 x1={marginLeft}
@@ -203,7 +228,7 @@ export function ValidationBoxplot({ agents, experimentId, title }: ValidationBox
                 strokeDasharray={val === 0.5 ? "5 3" : "0"}
               />
               <text
-                x={marginLeft - 8}
+                x={marginLeft - 12}
                 y={yScale(val)}
                 textAnchor="end"
                 dominantBaseline="middle"
@@ -217,11 +242,11 @@ export function ValidationBoxplot({ agents, experimentId, title }: ValidationBox
 
           {/* Y-axis label */}
           <text
-            x={15}
+            x={12}
             y={marginTop + plotHeight / 2}
             textAnchor="middle"
             dominantBaseline="middle"
-            transform={`rotate(-90, 15, ${marginTop + plotHeight / 2})`}
+            transform={`rotate(-90, 12, ${marginTop + plotHeight / 2})`}
             fill={TUHH_COLORS.dark}
             fontSize={12}
             fontWeight={500}
@@ -249,15 +274,6 @@ export function ValidationBoxplot({ agents, experimentId, title }: ValidationBox
           >
             Human Dishonest
           </text>
-          <text
-            x={dishonestX}
-            y={height - marginBottom + 34}
-            textAnchor="middle"
-            fill={TUHH_COLORS.gray}
-            fontSize={11}
-          >
-            (n={dishonestHumans.length})
-          </text>
 
           <text
             x={honestX}
@@ -268,26 +284,6 @@ export function ValidationBoxplot({ agents, experimentId, title }: ValidationBox
             fontWeight={500}
           >
             Human Honest
-          </text>
-          <text
-            x={honestX}
-            y={height - marginBottom + 34}
-            textAnchor="middle"
-            fill={TUHH_COLORS.gray}
-            fontSize={11}
-          >
-            (n={honestHumans.length})
-          </text>
-
-          {/* X-axis title */}
-          <text
-            x={marginLeft + plotWidth / 2}
-            y={height - 5}
-            textAnchor="middle"
-            fill={TUHH_COLORS.gray}
-            fontSize={11}
-          >
-            Human Honesty Status
           </text>
 
           {/* Boxplots - using TUHH colors */}
@@ -309,7 +305,6 @@ export function ValidationBoxplot({ agents, experimentId, title }: ValidationBox
           >
             <p className="font-semibold">{hoveredAgent.name}</p>
             <p>Agent Honest Rate: {(hoveredAgent.agentHonestRate * 100).toFixed(0)}%</p>
-            <p>HEXACO H-H: {hoveredAgent.hexacoHH.toFixed(2)}</p>
             <p>Human was: {hoveredAgent.humanHonest ? "Honest" : "Dishonest"}</p>
           </div>
         )}
@@ -317,26 +312,26 @@ export function ValidationBoxplot({ agents, experimentId, title }: ValidationBox
 
       {/* Stats summary */}
       <div className="mt-4 grid grid-cols-2 gap-4 text-xs">
-        <div className="rounded-lg p-3" style={{ backgroundColor: `${CHART_COLORS.dishonest}15` }}>
+        <div className="rounded-lg p-4" style={{ backgroundColor: `${CHART_COLORS.dishonest}15` }}>
           <h4 className="font-semibold mb-1" style={{ color: CHART_COLORS.dishonest }}>
-            Human Dishonest (n={dishonestHumans.length})
+            Human Dishonest: {dishonestHumans.length} ({totalCount > 0 ? ((dishonestHumans.length / totalCount) * 100).toFixed(0) : 0}%)
           </h4>
           <p style={{ color: TUHH_COLORS.dark }}>
-            Agent Median: <span className="font-mono">{(dishonestStats.median * 100).toFixed(0)}%</span>
+            Agents honest: <span>{(dishonestStats.mean * 100).toFixed(0)}%</span>
           </p>
           <p style={{ color: TUHH_COLORS.dark }}>
-            IQR: <span className="font-mono">{(dishonestStats.q1 * 100).toFixed(0)}% - {(dishonestStats.q3 * 100).toFixed(0)}%</span>
+            Agents dishonest: <span>{(100 - dishonestStats.mean * 100).toFixed(0)}%</span>
           </p>
         </div>
-        <div className="rounded-lg p-3" style={{ backgroundColor: `${CHART_COLORS.honest}15` }}>
+        <div className="rounded-lg p-4" style={{ backgroundColor: `${CHART_COLORS.honest}15` }}>
           <h4 className="font-semibold mb-1" style={{ color: CHART_COLORS.honest }}>
-            Human Honest (n={honestHumans.length})
+            Human Honest: {honestHumans.length} ({totalCount > 0 ? ((honestHumans.length / totalCount) * 100).toFixed(0) : 0}%)
           </h4>
           <p style={{ color: TUHH_COLORS.dark }}>
-            Agent Median: <span className="font-mono">{(honestStats.median * 100).toFixed(0)}%</span>
+            Agents honest: <span>{(honestStats.mean * 100).toFixed(0)}%</span>
           </p>
           <p style={{ color: TUHH_COLORS.dark }}>
-            IQR: <span className="font-mono">{(honestStats.q1 * 100).toFixed(0)}% - {(honestStats.q3 * 100).toFixed(0)}%</span>
+            Agents dishonest: <span>{(100 - honestStats.mean * 100).toFixed(0)}%</span>
           </p>
         </div>
       </div>

@@ -1,0 +1,32 @@
+reasoning_codes.csv — column codebook
+
+subject_type: 'human' or 'agent'
+agent_id: Matches agents.csv agent_id
+main_id: Original human study participant identifier (traceability)
+experiment_id: 'h001' for human rows (LLM-coded), '10010' for agent rows — see stats_meta.json
+run_id: Blank for human rows; repetition number (1-based) for agent rows
+
+One-hot reasoning codes (1 = applies, 0 = does not; full definitions in prompt_templates.py, reasoning_evaluation__codebook):
+- payout_motivation
+- financial_need
+- rationalization
+- plain_description
+- instruction_compliance
+- honesty_preference
+- lying_aversion
+- morals
+- fairness
+- no_need_to_lie
+- incentive_too_low
+- intuition
+- no_reasoning
+- anticipates_disbelief
+- satisfied_with_outcome
+- wished_for_better_outcome
+- aware_of_option_to_lie
+- unaware_of_option_to_lie
+- comments_on_the_study
+- suspects_rigged_roll
+- perceived_observability
+- fear_of_consequences
+- uninformative_response

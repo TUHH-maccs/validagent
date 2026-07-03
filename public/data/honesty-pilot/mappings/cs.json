@@ -1,0 +1,55 @@
+{
+  "cs_deontology": {
+    "adj": {
+      "1.0-1.8": "very rule-flexible",
+      "1.8-2.6": "somewhat rule-flexible",
+      "2.6-3.4": "neither particularly rule-bound nor rule-flexible",
+      "3.4-4.2": "somewhat rule-bound",
+      "4.2-5.0": "very rule-bound"
+    },
+    "dsc": {
+      "1.0-1.8": "strongly tend to evaluate actions case by case rather than following fixed moral rules",
+      "1.8-2.6": "tend to evaluate actions case by case rather than following fixed moral rules",
+      "2.6-3.4": "are neither particularly committed to fixed moral rules nor opposed to them",
+      "3.4-4.2": "tend to follow moral rules and principles consistently, regardless of the situation",
+      "4.2-5.0": "strongly tend to follow moral rules and principles consistently, regardless of the situation"
+    },
+    "pct": {
+      "1.0-2.9": "10",
+      "2.9-3.1": "20",
+      "3.1-3.3": "30",
+      "3.3-3.5": "40",
+      "3.5-3.7": "50",
+      "3.7-3.9": "60",
+      "3.9-4.1": "70",
+      "4.1-4.3": "80",
+      "4.3-5.0": "90"
+    }
+  },
+  "cs_utilitarianism": {
+    "adj": {
+      "1.0-1.8": "very outcome-indifferent",
+      "1.8-2.6": "somewhat outcome-indifferent",
+      "2.6-3.4": "neither particularly outcome-focused nor outcome-indifferent",
+      "3.4-4.2": "somewhat outcome-focused",
+      "4.2-5.0": "very outcome-focused"
+    },
+    "dsc": {
+      "1.0-1.8": "strongly tend not to consider outcomes or consequences as the basis for moral decisions",
+      "1.8-2.6": "tend not to consider outcomes or consequences as the basis for moral decisions",
+      "2.6-3.4": "are neither particularly focused on nor opposed to outcome-based reasoning in moral decisions",
+      "3.4-4.2": "tend to judge whether actions are right based on whether their consequences are good for everyone",
+      "4.2-5.0": "strongly tend to judge whether actions are right based on whether their consequences are good for everyone"
+    },
+    "pct": {
+      "1.0-1.1": "10",
+      "1.1-1.5": "30",
+      "1.5-1.7": "40",
+      "1.7-1.9": "50",
+      "1.9-2.1": "60",
+      "2.1-2.3": "70",
+      "2.3-2.7": "80",
+      "2.7-5.0": "90"
+    }
+  }
+}
