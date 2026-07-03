@@ -1,63 +1,50 @@
 # ValidAgent Repository
 
-> **⚠️ Legacy notice:** everything below this line documents the **pre-rebuild (v1)** state of the project. It is being replaced as part of a full rebuild (clean data pipeline with real study data, redesigned frontend). See the [Rebuild Log](#rebuild-log) at the bottom of this file for the current status. The pre-rebuild state remains permanently available via the `v1-legacy` git tag.
+A curated collection of AI agents with diverse behavioral traits for research, development, and reproducible experimentation — with a focus on empirically validating agent behavior against real human data.
 
-A curated collection of AI agents with diverse behavioral traits for research, development, and reproducible experimentation.
-
-**Live Demo:** [https://deqz1080.github.io/agent-repository-v2/](https://deqz1080.github.io/agent-repository-v2/)
+**Live Demo:** [https://www.validagent.org](https://www.validagent.org)
 
 ## Features
 
-- **60+ Curated Agents** organized into Agent Sets (Examples, The Office, Honesty Pilot Set)
-- **Empirically Validated Agents** based on behavioral economics paradigms
-- **Agent Set System** to categorize and filter different types of behavioral agents
-- **Interactive Visualizations** including Fischbacher Plot, Validation Boxplot, and Decision Scatter
-- **Advanced Filtering** by agent set, tags, origin type, and full-text search
-- **Export Functionality** to download selected agents as JSON
-- **Reproducible Experiments** with prompt templates and reproduction guides
-- **TUHH Color Scheme** for consistent branding
-- **Fully Static** - deploys to GitHub Pages without a backend
+- **Agent Sets** — curated collections of behavioral agents, each with its own dedicated page, data pipeline, and card design suited to what that set actually needs.
+- **Empirical Validation** — the flagship set (Honesty Pilot) models 931 real study participants and compares agent behavior against their actual recorded decisions, including Cohen's κ agreement statistics.
+- **Interactive Visualizations** — Fischbacher distribution plots, honesty-by-human-status boxplots, and per-agent decision scatter charts, all responsive (`ResizeObserver`-based, no fixed pixel widths).
+- **Configurable Prompts** — toggle which persona modules (demographics, personality, economic preferences, moral orientation) go into an agent's prompt, and see the generated text update live.
+- **Search & Filtering** — full-text search plus tag/attribute filters on both the Agent Sets overview and within the Honesty Pilot agent list.
+- **Export** — pick specific agents (or let the current filter selection decide) and export them; format selector is in place for future framework-specific export targets.
+- **TUHH Color Scheme** for consistent branding.
+- **Fully Static** — deploys to GitHub Pages without a backend; all per-set data is fetched client-side from static CSV/JSON files.
 
 ## Agent Sets
 
-Agents are organized into **Agent Sets** to distinguish between different types of behavioral personas:
+| Agent Set | Agents | Status | Description |
+|-----------|--------|--------|-------------|
+| **Honesty Pilot** | 931 | Validated | Real participants from the Die Roll Honesty Paradigm (Fischbacher & Föllmi-Heusi, 2013), across 25 prompt configurations covering demographics, personality, economic preferences, and moral orientation. |
+| **Workplace** | 20 | Placeholder | Generic workplace personality archetypes, demonstrating trait-toggle prompt generation. Demo only — not tied to real people or any copyrighted material. |
+| **Examples** | 20 | Placeholder | Small curated prompt/persona examples covering a mix of research topics (honesty, ethics, sustainability, etc.), used to illustrate the general agent-card concept. |
 
-| Agent Set | Description | Use Case |
-|-----------|-------------|----------|
-| **Examples** | Placeholder demo agents showcasing research capabilities | General behavioral research examples |
-| **TheOffice** | 20 curated fictional personas from "The Office" TV show | Demonstrating personality modeling, character simulation |
-| **Honesty Pilot Set** | 26 empirically validated agents from die-roll experiments | Behavioral economics research, honesty validation |
+### Honesty Pilot
 
-### Honesty Pilot Set (PreStudy2)
+The most developed set, and the one the empirical-validation story is built around:
 
-The "Honesty Pilot Set" contains **26 empirically validated agents** based on the **Die-Roll Honesty Paradigm** (Fischbacher & Föllmi-Heusi, 2013). This set features:
+- **25 prompt configurations** — single-module conditions (Demographics / Personality Traits / Economic Preferences / Moral Orientation, each in Score / Percentile / Adjective / Descriptive style) plus 11 module-combination conditions.
+- **Aggregate charts** — a Fischbacher plot (roll vs. human vs. agent report distribution) and a boxplot of agent honesty rate grouped by whether the human was honest or not, both driven by the currently selected configuration.
+- **Cohen's κ** agreement statistic shown in the header for the current configuration, plus the best-aligned configuration overall.
+- **Per-agent cards** — demographics, HEXACO personality badges, economic-preference/moral-orientation badges (shown only for active modules), the human's actual roll/report as ground truth, a behavioral-alignment scatter plot (agent decisions vs. human decision), reasoning alignment (only available for the Economic Preferences / Descriptive condition, where LLM-coded reasoning categories exist for both human and agent), and the exact rendered prompt text.
+- **Search, tag filters (Human Honest/Dishonest, Agent honesty-rate buckets), "Show More" pagination, and export** with a checkbox-based selection that overrides the active filters when non-empty.
 
-- **8 Experiment Configurations** with different prompt module combinations
-- **Empirical Validation** against theoretical honesty distributions
-- **Interactive Visualizations:**
-  - **Fischbacher Plot** - Distribution of reported outcomes vs. theoretical uniform distribution
-  - **Validation Boxplot** - Cross-experiment comparison of honesty metrics
-  - **Decision Scatter** - Reasoning alignment analysis
-- **Reasoning Alignment Analysis** - Understanding how agents justify their decisions
-- **Configurable Trait Toggles** for detailed behavioral exploration
+### Workplace / Examples
 
-### The Office Demo Agents
-
-The "TheOffice" agent set includes 20 characters from the TV show, each with:
-- Distinct personality traits and behavioral patterns
-- Character-specific communication styles
-- Ready-to-use prompt templates for simulating their behavior
-- Example outputs demonstrating their responses
-
-These are intended as demonstrations of how behavioral agents can model complex personalities with distinct traits, communication patterns, and social dynamics.
+Simpler demo sets: a card per agent with toggleable trait categories and a live-generated persona prompt preview. No aggregate charts, no per-experiment configuration — these exist to show the underlying "toggle modules → generated prompt" mechanic on its own, independent of the Honesty Pilot's research-specific machinery.
 
 ## Tech Stack
 
-- **Framework:** Next.js 16 (App Router)
-- **Language:** TypeScript (Strict Mode)
-- **Styling:** Tailwind CSS 4 with TUHH Color Scheme
-- **Charts:** Recharts for interactive visualizations
-- **Deployment:** GitHub Pages (Static Export)
+- **Framework:** Next.js 16 (App Router), static export (`output: "export"`)
+- **Language:** TypeScript (strict mode)
+- **Styling:** Tailwind CSS 4 with a TUHH color scheme (`lib/colors.ts`)
+- **Charts:** hand-built SVG components (`components/charts/`) using `ResizeObserver` for responsive sizing — not a charting library, since axis/label alignment control turned out to matter more than a library's defaults could give us
+- **CSV parsing:** Papaparse, client-side
+- **Deployment:** GitHub Pages (static export), custom domain via `public/CNAME`
 
 ## Getting Started
 
@@ -69,18 +56,14 @@ These are intended as demonstrations of how behavioral agents can model complex 
 ### Installation
 
 ```bash
-# Clone the repository
-git clone https://github.com/DeQz1080/agent-repository-v2.git
-cd agent-repository-v2
-
-# Install dependencies
+git clone https://github.com/TUHH-maccs/validagent.git
+cd validagent
 npm install
 ```
 
 ### Development
 
 ```bash
-# Start the development server
 npm run dev
 ```
 
@@ -89,193 +72,113 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ### Build
 
 ```bash
-# Create a production build
 npm run build
 ```
 
-The static files will be generated in the `out/` directory.
+Static files are generated in the `out/` directory.
 
 ### Lint
 
 ```bash
-# Run ESLint
 npm run lint
 ```
 
 ## Project Structure
 
 ```
-validagent-repository/
-├── app/                    # Next.js App Router pages
-│   ├── page.tsx           # Main repository page
-│   ├── sets/              # Agent Sets overview
-│   ├── projects/          # Projects page
-│   └── resources/         # Resources page
-├── components/            # React components
-│   ├── AgentCard.tsx              # Agent display card
-│   ├── StructuredAgentCard.tsx    # Enhanced agent card with trait toggles
-│   ├── SetDetailClient.tsx        # Agent set detail view
-│   ├── FilterBar.tsx              # Search and filter controls
-│   ├── FeedbackForm.tsx           # User feedback form
-│   └── charts/                    # Visualization components
-│       ├── FischbacherPlot.tsx    # Honesty distribution chart
-│       ├── ValidationBoxplot.tsx  # Cross-experiment comparison
-│       └── DecisionScatter.tsx    # Reasoning alignment scatter
-├── data/                  # Static data
-│   ├── sets/              # Agent set definitions
-│   │   ├── examples.json
-│   │   ├── theoffice.json
-│   │   └── prestudy2.json # Honesty Pilot Set data
-│   └── site.ts            # Site configuration
-├── types/                 # TypeScript type definitions
-│   └── index.ts           # Agent, Tag, Metadata types
-├── public/                # Static assets
-│   └── avatars/           # Agent avatar images
-├── .github/workflows/     # GitHub Actions
-│   └── deploy.yml         # Auto-deploy to GitHub Pages
-└── next.config.ts         # Next.js configuration
+validagent/
+├── app/
+│   ├── page.tsx                        # Home
+│   ├── sets/
+│   │   ├── page.tsx                    # Agent Sets overview (search + tag filter)
+│   │   ├── honesty-pilot/page.tsx
+│   │   ├── workplace-personas/page.tsx
+│   │   └── examples/page.tsx
+│   ├── projects/                       # Projects page (+ simulation demo)
+│   └── resources/                      # Resources page (+ EMAS 2026 presentation)
+├── components/
+│   ├── HonestyPilotSetClient.tsx        # Honesty Pilot page: config selector, charts, filters, list
+│   ├── HonestyPilotAgentCard.tsx
+│   ├── WorkplacePersonasSetClient.tsx / WorkplacePersonaCard.tsx
+│   ├── ExamplesSetClient.tsx / ExampleAgentCard.tsx
+│   └── charts/
+│       ├── FischbacherPlot.tsx
+│       ├── ValidationBoxplot.tsx
+│       └── DecisionScatter.tsx
+├── lib/
+│   ├── colors.ts                       # TUHH color palette
+│   ├── honestyPilotData.ts             # fetch/parse for public/data/honesty-pilot/
+│   ├── workplacePersonasData.ts
+│   ├── examplesData.ts
+│   ├── promptTemplates.ts              # persona/task prompt template strings
+│   ├── traitMapping.ts                 # trait value -> text bucket lookup
+│   └── renderPrompt.ts                 # assembles a full agent prompt from active modules
+├── types/
+│   ├── honestyPilot.ts
+│   ├── workplacePersonas.ts
+│   └── examples.ts
+├── public/
+│   ├── CNAME                           # www.validagent.org
+│   └── data/
+│       ├── honesty-pilot/              # agents.csv, results/, stats_results/, stats_meta.json, mappings/
+│       ├── workplace-personas/         # agents.csv, meta.json
+│       └── examples/                   # agents.csv, meta.json
+├── scripts/
+│   └── build_pilot_v1.py               # Honesty Pilot data pipeline (raw study data -> public/data/honesty-pilot/)
+└── .github/workflows/deploy.yml        # auto-deploy to GitHub Pages on push to main
 ```
 
-## Deployment to GitHub Pages
+## Data Architecture
 
-### Automatic Deployment
+Every agent set follows the same pattern, and none of them bundle their data into the JS build — everything lives under `public/data/<set>/` and is `fetch()`-ed at runtime (with cache-busting query params, since these files get iterated on a lot during development and browsers cache overly aggressively otherwise):
 
-This repository includes a GitHub Actions workflow that automatically deploys to GitHub Pages on every push to `main` or `master`.
+- `agents.csv` — one row per agent.
+- `meta.json` — set-level metadata: name, description, domain, validation strength, tags, and (where relevant) prompt templates / trait categories.
+- Larger sets split further where needed — Honesty Pilot's per-experiment results (`results/<experiment_id>.csv`, `stats_results/<experiment_id>.csv`) are split into one file per condition rather than one giant file, since the frontend only ever needs one condition's data at a time.
 
-### Setup Steps
+This intentionally replaced an earlier version of the app where each set's agents were embedded as one big static JSON import per set — fine for small demo sets, but Honesty Pilot's real data (116k+ result rows) made that approach bloat the JS bundle.
 
-1. **Create a GitHub Repository**
-   ```bash
-   git remote add origin https://github.com/DeQz1080/agent-repository-v2.git
-   ```
+### Raw data governance
 
-2. **Configure GitHub Pages**
-   - Go to your repository on GitHub
-   - Navigate to **Settings** > **Pages**
-   - Under "Build and deployment", select **GitHub Actions** as the source
+Raw/intermediate research data (survey exports, item-level responses, etc.) is **never committed to this repo** — only the derived, published CSVs under `public/data/` are. Any local raw-data staging should go in a `prepare/` folder, which is gitignored (`.gitignore` still has the `/prepare/` rule for this reason, even though nothing currently lives there).
 
-3. **Update Base Path** (if needed)
+## Adding a New Agent Set
 
-   In `next.config.ts`, update the `basePath` to match your repository name:
-   ```typescript
-   basePath: process.env.NODE_ENV === "production" ? "/your-repo-name" : "",
-   ```
+There's no scaffolding CLI yet — follow the pattern the three existing sets use:
 
-4. **Push to GitHub**
-   ```bash
-   git add .
-   git commit -m "Initial commit"
-   git push -u origin main
-   ```
+1. **Data:** `public/data/<set-slug>/agents.csv` + `meta.json` (name, description, domain, `validationStrength`, `tags`).
+2. **Types:** `types/<setName>.ts` — one interface for an agent row, one for the meta shape.
+3. **Fetch layer:** `lib/<setName>Data.ts` — `fetchXAgents()` / `fetchXMeta()`, parsed with Papaparse, using the same cache-busting `withCacheBust()` pattern as the existing `lib/*Data.ts` files.
+4. **Card component:** `components/<SetName>Card.tsx` — how a single agent renders. Keep it self-contained (its own local types/props), not dependent on any other set's types.
+5. **Page client:** `components/<SetName>SetClient.tsx` — fetches the data, renders the header + agent grid. Only add config selectors / aggregate charts / filters if the set actually needs them (Honesty Pilot does; Workplace and Examples deliberately don't).
+6. **Route:** `app/sets/<set-slug>/page.tsx` — thin wrapper that just renders `<SetNameSetClient />`.
+7. **Listing entry:** add an `AgentSetSummary` object for it in `app/sets/page.tsx`'s `agentSets` array so it shows up on the overview page.
 
-5. **Wait for Deployment**
-   - Go to **Actions** tab in your repository
-   - Watch the "Deploy to GitHub Pages" workflow
-   - Once complete, your site will be live at `https://deqz1080.github.io/agent-repository-v2/`
+## Deployment
 
-### Manual Deployment
-
-If you prefer manual deployment:
-
-```bash
-# Build the static site
-npm run build
-
-# The output is in the 'out' directory
-# Upload contents of 'out' to your hosting provider
-```
-
-## Agent Data Structure
-
-Each agent follows this structure:
-
-```typescript
-type AgentSet = "TheOffice" | "Examples" | "PreStudy2";
-
-interface Agent {
-  id: string;              // Unique identifier (e.g., "A-01", "PS2-01")
-  agentSet?: AgentSet;     // Agent set category
-  name: string;            // Display name
-  task: string;            // Task description
-  persona: string;         // Persona description
-  origin: AgentOrigin;     // "synthetic" | "human" | "curated"
-  traits: string[];        // Behavioral traits
-  tags: string[];          // Tag IDs for filtering
-  promptTemplate: string;  // Ready-to-use prompt
-  exampleOutput: string;   // Sample output
-  howToReproduce: string;  // Reproduction instructions
-  createdAt: string;       // Creation date
-  updatedAt: string;       // Last update date
-
-  // PreStudy2 specific fields
-  experimentConfig?: string;     // Experiment configuration ID
-  honestyMetrics?: HonestyMetrics;
-  reasoningAlignment?: number;
-}
-```
-
-### Agent ID Conventions
-
-- `A-XX` - Example agents (e.g., A-01, A-02)
-- `OFF-XX` - The Office agents (e.g., OFF-01, OFF-02)
-- `PS2-XX` - Honesty Pilot Set agents (e.g., PS2-01, PS2-02)
-
-## Avatar Images
-
-Agent cards display a circular avatar. The system supports custom avatar images:
-
-1. **Location:** Place images in `/public/avatars/`
-2. **Naming:** Use the agent ID as filename (e.g., `OFF-01.png` for Michael Scott)
-3. **Format:** PNG recommended, 40x40px minimum
-4. **Fallback:** If no image exists, colored initials are displayed
-
-Example:
-```
-/public/avatars/
-  OFF-01.png  # Michael Scott
-  OFF-02.png  # Dwight Schrute
-  PS2-01.png  # Honesty Pilot Agent
-```
-
-## Contributing
-
-Contributions are welcome! To add a new agent:
-
-1. Fork the repository
-2. Add your agent to the appropriate set in `data/sets/`
-3. Ensure all required fields are filled
-4. Submit a pull request
-
-## Trait Categories
-
-| Category | Description |
-|----------|-------------|
-| **Honesty** | Agents focused on truthfulness and transparency |
-| **Climate** | Environmental awareness and sustainability |
-| **Social Norms** | Cultural sensitivity and social dynamics |
-| **Teaching** | Educational and instructional capabilities |
+GitHub Actions (`.github/workflows/deploy.yml`) builds and deploys to GitHub Pages automatically on every push to `main`. The site is served at the custom domain `www.validagent.org` (via `public/CNAME` + Cloudflare DNS, CNAME-flattened at the apex, DNS-only/grey-cloud to avoid Flexible-SSL redirect loops) — `next.config.ts` sets `basePath: ""` accordingly (no repo-name subpath).
 
 ## References
 
 - Fischbacher, U., & Föllmi-Heusi, F. (2013). Lies in disguise - An experimental study on cheating. *Journal of the European Economic Association*, 11(3), 525-547.
-
-## License
-
-MIT License - see [LICENSE](LICENSE) for details.
 
 ## Acknowledgments
 
 - TUHH (Technische Universität Hamburg)
 - Built with [Next.js](https://nextjs.org/)
 - Styled with [Tailwind CSS](https://tailwindcss.com/)
-- Visualizations with [Recharts](https://recharts.org/)
+- CSV parsing with [Papaparse](https://www.papaparse.com/)
 
-## Rebuild Log
+## Notes / Open TODOs
 
-Everything above this section describes the legacy (pre-rebuild) project. The permanent snapshot of that state is tagged [`v1-legacy`](../../tree/v1-legacy). New entries here document the rebuild as it happens; this section (and the rest of the README) will be rewritten once the rebuild lands on `main`.
+- **Revert temporary combination-condition labels after paper screenshots are taken.** The 11 combination-experiment labels (e.g. "Demographics + Personality Traits") are spelled out in full for readability in paper figures; the original abbreviated form (e.g. "D + PT") should be restored afterward. Every spot touched is marked with the comment/grep marker `PAPER_SCREENSHOT_TEMP` (in `public/data/honesty-pilot/stats_meta.json` and `scripts/build_pilot_v1.py`) — grep for that string to find them all.
+- **No LICENSE file exists yet** despite this having been referenced in an earlier draft of this README — add one (or confirm there isn't meant to be one yet) before treating this as public/reusable under any specific license.
+- **`dem_industry` free-text values are intentionally left as-is** (typos and inconsistent casing included) — genuine open-ended survey responses, not a bug.
+- **Known, accepted residual risk:** the git history (reachable via `main`'s own commit ancestry) still contains an early, now-superseded version of the Workplace set that used real "The Office" character names/traits/avatar images. The live site and current `main` no longer contain this — the underlying commit is just still technically reachable by cloning and walking history. A full history rewrite would remove it entirely but requires a force-push to `main` and rewrites all commit hashes from that point forward; the decision (2026-07-05) was to accept this residual risk rather than do that rewrite, since digging through commit history for a small academic-tool repo is realistically unlikely.
 
-### 2026-07-01 — Rebuild started
+### Project history
 
-- Tagged the pre-rebuild state as `v1-legacy` (permanent reference, checkoutable, no longer live once the rebuild ships).
-- Started work on the `rebuild` branch; `main` and the live site stay untouched until the rebuild is merged.
-- Goals: rebuild the data pipeline from real study data (raw data kept locally, not committed) into a clean `agents.csv` + derived stats, and redesign the frontend.
+- **2026-07-01** — Tagged the pre-rebuild state as `v1-legacy`, started the rebuild on a separate branch so `main` stayed untouched during the rework.
+- **2026-07-03** — Migrated Workplace and Examples to the same `public/data/` + per-set fetch architecture as Honesty Pilot; genericized the Workplace set (no more recognizable copyrighted characters); removed the now-fully-replaced old shared `AgentSet`/`StructuredAgent` type system, the old placeholder "PreStudy2" Honesty Pilot Set (superseded by the real 931-participant set), and all infra that only existed to serve those.
+- **2026-07-04** — Normalized inconsistent capitalization in Honesty Pilot's demographics data; corrected the combination-condition module styles (they weren't uniformly "Descriptive" as originally assumed — PT used Adjective, EP used Descriptive, MO used Percentile in the actual study) and fixed prompt module ordering to always render D → PT → EP → MO regardless of toggle order.
+- README rewritten to describe the current system going forward instead of tracking rebuild-in-progress state, in preparation for merging `rebuild` into `main` (removing the `v1-legacy` tag and the now-redundant `rebuild` branch once that's done).
